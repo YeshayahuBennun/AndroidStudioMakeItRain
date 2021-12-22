@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button makeItRain;
     private Button showInfo;
     private TextView moneyValue;
+    private int moneyCounter = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMoney(View view) {
-        Log.d("MainActivity","onClick: Make it rain!");
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+
+        moneyCounter += 1000;
+        moneyValue.setText(String.valueOf(numberFormat.format(moneyCounter)));
+        //Log.d("MIR", "onClick: " + moneyCounter);
     }
 }
